@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPay Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+
+        .balance {
+            font-size: 24px;
+            color: #34a853;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .buttons button:hover {
+            background-color: #357ae8;
+        }
+
+        .face-scan {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ea4335;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">GPay</div>
+    <div class="balance">Balance: $10000.00</div>
+
+    <div class="input-group">
+        <label for="amount">Amount to Send:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+    </div>
+
+    <div class="buttons">
+        <button onclick="sendMoney()">Send Money</button>
+        <button onclick="checkBalance()">Check Balance</button>
+    </div>
+
+    <div class="face-scan" onclick="faceScan()">Scan Face for Payment</div>
+</div>
+
+<script>
+    let balance = 10000.00;
+    function sendMoney() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        if (amount && amount <= balance) {
+            balance -= amount;
+            alert(`$${amount.toFixed(2)} sent successfully!`);
+            document.querySelector('.balance').innerText = `Balance: $${balance.toFixed(2)}`;
+        } else {
+            alert('Insufficient balance or invalid amount.');
+        }
+    }
+
+    function checkBalance() {
+        alert(`Your current balance is $${balance.toFixed(2)}`);
+    }
+
+    function faceScan() {
+        alert('Face scanning for payment...');
+    }
+</script>
+
+</body>
+</html>
